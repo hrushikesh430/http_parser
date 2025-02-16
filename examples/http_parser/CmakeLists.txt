@@ -1,0 +1,14 @@
+# Start of Selection
+cmake_minimum_required(VERSION 3.10)  # Specify the minimum CMake version
+project(HttpParser)  # Define the project name
+
+include_directories(PRIVATE private_include)
+
+# Ensure the header file is included in the project
+set(HEADERS ../../http_parse.h)
+
+set(SOURCES ../../http_parse.c main.c)  # Just include the source file explicitly
+# End of Selection
+add_library(http_parser STATIC ${SOURCES} ${HEADERS})
+add_executable(http_parser_example main.c)
+target_link_libraries(http_parser_example http_parser)
